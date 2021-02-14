@@ -1,4 +1,4 @@
-function ShoppingItem({ title, isDone }) {
+function ShoppingItem({ title, isDone = false }) {
   return (
     <div>
       <label>
