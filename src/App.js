@@ -17,8 +17,9 @@ function App() {
     <div className="App">
       <h1>{title}</h1>
       <Form onCreateShoppingItem={addShoppingItem} />
-      <ShoppingItem title="Milk" />
-      <ShoppingItem title="Coffee" isDone />
+      {shoppingItems.map((item) => (
+        <ShoppingItem title={item.title} isDone={item.isDone} />
+      ))}
     </div>
   );
 }

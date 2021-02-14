@@ -4,6 +4,8 @@ export default function Form({ onCreateShoppingItem }) {
     const form = event.target;
     const input = form.title;
     onCreateShoppingItem(input.value);
+    form.reset();
+    input.focus();
   }
 
   return (
