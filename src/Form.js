@@ -1,6 +1,13 @@
-export default function Form() {
+export default function Form({ onCreateShoppingItem }) {
+  function handleSubmit(event) {
+    event.preventDefault();
+    const form = event.target;
+    const input = form.title;
+    onCreateShoppingItem(input.value);
+  }
+
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <label>
         Add shopping item:
         <input
