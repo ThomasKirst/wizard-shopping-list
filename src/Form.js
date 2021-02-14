@@ -4,6 +4,7 @@ export default function Form() {
       <label>
         Add shopping item:
         <input
+          className="add"
           name="title"
           type="text"
           placeholder="What else needs to be bought?"

@@ -1,3 +1,31 @@
-.App {
-  text-align: center;
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  width: 20rem;
+}
+
+label {
+  font-family: sans-serif;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+input {
+  font-size: 1rem;
+  padding: 0.5rem;
+}
+
+.add {
+  width: 16rem;
+}
+
+button {
+  padding: 0.5rem 1rem;
+  background: rebeccapurple;
+  color: ivory;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 0.5rem;
 }
