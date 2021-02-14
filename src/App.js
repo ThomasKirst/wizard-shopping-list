@@ -1,6 +1,9 @@
+import { useState } from 'react';
+
 import Form from './Form';
 import ShoppingItem from './ShoppingItem';
-import { useState } from 'react';
+
+import { v4 as uuidv4 } from 'uuid';
 
 import './App.css';
 
@@ -10,15 +13,36 @@ function App() {
   const [shoppingItems, setShoppingItems] = useState([]);
 
   function addShoppingItem(title) {
-    setShoppingItems([...shoppingItems, { title, isDone: false }]);
+    setShoppingItems([
+      ...shoppingItems,
+      { title, isDone: false, id: uuidv4() },
+    ]);
   }
+
+  function toggleShoppingItem(itemId) {
+    const itemIndex = shoppingItems.findIndex((item) => item.id === itemId);
+    const shoppingItem = shoppingItems[itemIndex];
+
+    setShoppingItems([
+      ...shoppingItems.slice(0, itemIndex),
+      { ...shoppingItem, isDone: !shoppingItem.isDone },
+      ...shoppingItems.slice(itemIndex + 1),
+    ]);
+  }
+
+  console.log(shoppingItems);
 
   return (
     <div className="App">
       <h1>{title}</h1>
       <Form onCreateShoppingItem={addShoppingItem} />
       {shoppingItems.map((item) => (
-        <ShoppingItem title={item.title} isDone={item.isDone} />
+        <ShoppingItem
+          key={item.id}
+          title={item.title}
+          isDone={item.isDone}
+          onItemClick={() => toggleShoppingItem(item.id)}
+        />
       ))}
     </div>
   );

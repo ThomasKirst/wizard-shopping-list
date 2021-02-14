@@ -1,8 +1,8 @@
-function ShoppingItem({ title, isDone = false }) {
+function ShoppingItem({ title, isDone = false, onItemClick }) {
   return (
     <div>
       <label>
-        <input type="checkbox" checked={isDone} />
+        <input type="checkbox" checked={isDone} onChange={onItemClick} />
         {title}
       </label>
     </div>
