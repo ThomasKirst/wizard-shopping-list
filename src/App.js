@@ -1,7 +1,17 @@
+import ShoppingItem from './ShoppingItem';
+
 import './App.css';
 
 function App() {
-  return <div className="App">Hello World! This is my first React App!</div>;
+  const title = 'Hello World! This is my first React App!';
+
+  return (
+    <div className="App">
+      <h1>{title}</h1>
+      <ShoppingItem title="Milk" />
+      <ShoppingItem title="Coffee" isDone />
+    </div>
+  );
 }
 
 export default App;
