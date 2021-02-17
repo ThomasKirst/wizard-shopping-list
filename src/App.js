@@ -1,10 +1,9 @@
 import { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 import Headline from './Headline';
 import Form from './Form';
-import ShoppingItem from './ShoppingItem';
-
-import { v4 as uuidv4 } from 'uuid';
+import ShoppingList from './ShoppingList';
 
 import './App.css';
 
@@ -47,15 +46,11 @@ function App() {
     <div className="App">
       <Headline name="Harry" />
       <Form onCreateShoppingItem={addShoppingItem} />
-      {shoppingItems.map((item) => (
-        <ShoppingItem
-          key={item.id}
-          title={item.title}
-          isDone={item.isDone}
-          onItemClick={() => toggleShoppingItem(item.id)}
-          onItemDelete={() => deleteShoppingItem(item.id)}
-        />
-      ))}
+      <ShoppingList
+        items={shoppingItems}
+        onItemClick={toggleShoppingItem}
+        onItemDelete={deleteShoppingItem}
+      />
     </div>
   );
 }
