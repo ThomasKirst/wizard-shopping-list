@@ -1,4 +1,11 @@
-function ShoppingItem({ title, isDone = false, onItemClick, onItemDelete }) {
+import PropTypes from 'prop-types';
+
+export default function ShoppingItem({
+  title,
+  isDone = false,
+  onItemClick,
+  onItemDelete,
+}) {
   return (
     <div>
       <label>
@@ -15,4 +22,9 @@ function ShoppingItem({ title, isDone = false, onItemClick, onItemDelete }) {
   );
 }
 
-export default ShoppingItem;
+ShoppingItem.propTypes = {
+  title: PropTypes.string,
+  isDone: PropTypes.bool,
+  onItemClick: PropTypes.func,
+  onItemDelete: PropTypes.func,
+};

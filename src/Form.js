@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import './Form.css';
 
 export default function Form({ onCreateShoppingItem }) {
@@ -22,3 +24,7 @@ export default function Form({ onCreateShoppingItem }) {
     </form>
   );
 }
+
+Form.propTypes = {
+  onCreateShoppingItem: PropTypes.func,
+};
