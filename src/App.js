@@ -1,5 +1,6 @@
 import { useState } from 'react';
 
+import Headline from './Headline';
 import Form from './Form';
 import ShoppingItem from './ShoppingItem';
 
@@ -8,8 +9,6 @@ import { v4 as uuidv4 } from 'uuid';
 import './App.css';
 
 function App() {
-  const title = 'Hello World! This is my first React App!';
-
   const [shoppingItems, setShoppingItems] = useState([]);
 
   function addShoppingItem(title) {
@@ -46,7 +45,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>{title}</h1>
+      <Headline name="Harry" />
       <Form onCreateShoppingItem={addShoppingItem} />
       {shoppingItems.map((item) => (
         <ShoppingItem

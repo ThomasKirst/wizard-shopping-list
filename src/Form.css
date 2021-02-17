@@ -1,0 +1,27 @@
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+h3 {
+  color: rebeccapurple;
+}
+
+input {
+  padding: 0.3rem;
+}
+
+button {
+  background: rebeccapurple;
+  border: none;
+  border-radius: 4px;
+  color: ivory;
+  margin: 1rem 0;
+  padding: 0.4rem 0.8rem;
+  transition: box-shadow 0.2s ease-in-out;
+}
+
+button:hover {
+  box-shadow: 0 2px 10px rgba(45, 0, 77, 0.7);
+  cursor: pointer;
+}
