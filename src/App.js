@@ -20,6 +20,15 @@ function App() {
   }
 
   function toggleShoppingItem(itemId) {
+    setShoppingItems(
+      shoppingItems.map((item) => {
+        if (item.id === itemId) {
+          item.isDone = !item.isDone;
+        }
+        return item;
+      })
+    );
+    /*
     const itemIndex = shoppingItems.findIndex((item) => item.id === itemId);
     const shoppingItem = shoppingItems[itemIndex];
 
@@ -28,9 +37,12 @@ function App() {
       { ...shoppingItem, isDone: !shoppingItem.isDone },
       ...shoppingItems.slice(itemIndex + 1),
     ]);
+    */
   }
 
-  console.log(shoppingItems);
+  function deleteShoppingItem(itemId) {
+    setShoppingItems(shoppingItems.filter((item) => item.id !== itemId));
+  }
 
   return (
     <div className="App">
@@ -42,6 +54,7 @@ function App() {
           title={item.title}
           isDone={item.isDone}
           onItemClick={() => toggleShoppingItem(item.id)}
+          onItemDelete={() => deleteShoppingItem(item.id)}
         />
       ))}
     </div>
