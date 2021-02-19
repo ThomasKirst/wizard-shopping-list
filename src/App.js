@@ -1,14 +1,24 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
 import Headline from './Headline';
 import Form from './Form';
 import ShoppingList from './ShoppingList';
 
+import loadFromLocal from './lib/loadFromLocal';
+import saveLocally from './lib/saveToLocal';
+
 import './App.css';
 
 function App() {
-  const [shoppingItems, setShoppingItems] = useState([]);
+  const LOCAL_STORAGE_KEY = 'hogwartsShoppingList';
+  const [shoppingItems, setShoppingItems] = useState(
+    loadFromLocal(LOCAL_STORAGE_KEY) ?? []
+  );
+
+  useEffect(() => {
+    saveLocally(LOCAL_STORAGE_KEY, shoppingItems);
+  }, [shoppingItems]); // "dependency" on shoppingItems
 
   function addShoppingItem(title) {
     setShoppingItems([
@@ -21,21 +31,11 @@ function App() {
     setShoppingItems(
       shoppingItems.map((item) => {
         if (item.id === itemId) {
-          item.isDone = !item.isDone;
+          item.isDone = !item.isDone; // true => false, false => true
         }
         return item;
       })
     );
-    /*
-    const itemIndex = shoppingItems.findIndex((item) => item.id === itemId);
-    const shoppingItem = shoppingItems[itemIndex];
-
-    setShoppingItems([
-      ...shoppingItems.slice(0, itemIndex),
-      { ...shoppingItem, isDone: !shoppingItem.isDone },
-      ...shoppingItems.slice(itemIndex + 1),
-    ]);
-    */
   }
 
   function deleteShoppingItem(itemId) {

@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 
 import './Form.css';
 
+import Button from './Button';
 export default function Form({ onCreateShoppingItem }) {
   function handleSubmit(event) {
     event.preventDefault(); // Prevent default behaviour of the form element
@@ -20,7 +21,7 @@ export default function Form({ onCreateShoppingItem }) {
         type="text"
         placeholder="What else needs to be bought?"
       />
-      <button>Add to List</button>
+      <Button text="Add to List" />
     </form>
   );
 }
